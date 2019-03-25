@@ -3,6 +3,7 @@ package maave.maps2go.controlador;
 import java.io.Serializable;
 import javax.annotation.ManagedBean;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 
 @ManagedBean
 @SessionScoped
@@ -36,7 +37,8 @@ public class SessionCtrl implements Serializable{
     }
 
     public String cerrarSesion() {
-        return "";
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "/index?faces-redirect=true";
     }
 
 }
